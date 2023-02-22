@@ -1,39 +1,274 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Météo</title>
+    <title>Feux d'espaces naturels combustibles</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   </head>
   <body>
-    <div class="header">
-      <h1>FDF</h1>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="donnees">Données</button>
+      <button class="tab" data-tab="carte">Carte</button>
     </div>
-    <div class="main-container">
-      <div class="navbar">
-        <a href="#drought">Indices de sécheresse</a>
-        <a href="#risk">Indices de dangers</a>
-        <a href="#current-weather">Conditions météorologiques</a>
-      </div>
-      <div class="weather-container">
-        <div class="card" id="drought">
-          <h2>Indices de sécheresse</h2>
-          <div class="current-ICL">ICL : 100</div>
-          <div class="current-IH">IH : 100</div>
-          <div class="current-IS">IS : 100</div>
-        </div>
-        <div class="card" id="risk">
-          <h2>Indices de dangers</h2>
-          <div class="current-temp">IEPx</div>
-          <div class="current-conditions">IFM</div>
-        </div>
-        <div class="card" id="current-weather">
-          <h2>Conditions météorologiques</h2>
-          <div>Nébulosité : 10%</div>
-          <div>Force du vent : 20km/h</div>
-          <div>Taux d'humidité : 20%</div>
-          <div>Température de chaussée : 30°C</div>
-        </div>
+    
+    <div class="tab-content" data-tab="donnees">
+      <!-- Contenu de l'onglet "Données" -->
+      <div id="data">
+        <aside>
+          <label for="checkbox1">
+            <input type="checkbox" id="checkbox1"> Checkbox 1
+          </label>
+          <label for="checkbox2">
+            <input type="checkbox" id="checkbox2"> Checkbox 2
+          </label>
+          <label for="checkbox3">
+            <input type="checkbox" id="checkbox3"> Checkbox 3
+          </label>
+          <button class="export-button" onclick="exporter()">Exporter</button>
+        </aside>
+      
+        <section>
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th colspan="2"></th>
+                <th>Grésigne</th>
+                <th>Ségala</th>
+                <th>Cogagne</th>
+                <th>Sidobre</th>
+                <th>Castrais</th>
+                <th>Haut Languedoc</th>
+                <th>Montagne Noire</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th rowspan="3">Indices de sécheresse</th>
+                <th>ICL</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr class="active-row">
+                <th>IH</th>
+                <td>5150</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th>IS</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th rowspan="2">Indices de dangers</th>
+                <th>IEPx</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th>IFM</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th rowspan="2">?????</th>
+                <th>NSV2</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th>IDI</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th rowspan="4">Conditions météorologiques</th>
+                <th>Nébulosité</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th>Force du vent</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th>Taux d'humidité</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+              <tr>
+                <th>Température de chaussée</th>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+                <td>6000</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
       </div>
     </div>
+    
+    <div class="tab-content" data-tab="carte" style="display: none;">
+      <!-- Contenu de l'onglet "Carte" -->
+      <div id="map">
+        <aside>
+          <label for="checkbox1">
+            <input type="checkbox" id="checkbox1"> Checkbox 4
+          </label>
+          <label for="checkbox2">
+            <input type="checkbox" id="checkbox2"> Checkbox 5
+          </label>
+          <label for="checkbox3">
+            <input type="checkbox" id="checkbox3"> Checkbox 6
+          </label>
+        </aside>
+      
+        <section>
+          <div id="mapid"></div>
+          
+        </section>
+      </div>
+    </div>
+
+    <script>
+      /*--------------------------------------------------------------------------Changement d'onglets--------------------------------------------------------------------------*/
+      const tabs = document.querySelectorAll('.tab');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabId = tab.getAttribute('data-tab');
+
+          tabs.forEach(tab => {
+            tab.classList.remove('active');
+          });
+
+          tabContents.forEach(content => {
+            content.style.display = 'none';
+          });
+
+          tab.classList.add('active');
+          document.querySelector(`.tab-content[data-tab="${tabId}"]`).style.display = 'inline-block';
+        });
+      });
+
+      /*--------------------------------------------------------------------------Exportation--------------------------------------------------------------------------*/
+
+      // Récupère les données HTML de la page et les formate en un tableau
+      function getData() {
+        // Sélectionne tous les éléments de la classe "data" dans la page
+        const elements = document.querySelectorAll('td');
+        
+        // Initialise un tableau qui va contenir les données
+        const data = [];
+        
+        // Pour chaque élément, ajoute son texte dans le tableau de données
+        elements.forEach(element => {
+          data.push([element.textContent]);
+        });
+        
+        return data;
+      }
+
+      // Fonction d'exportation
+      function exporter() {
+        // Récupération des données à exporter
+        /*var donnees = [['Température (max)', 'Vent', 'Humidité (%)', 'Nébulosité (%)'], ['Donnée 1', 'Donnée 2'], ['Donnée 3', 'Donnée 4']];
+        var datas = [6000,5000,4000,3000];
+        donnees[0].splice(2, 0, 6000);
+        console.log(donnees);
+        for (var i=0; i<datas.length; i++){
+          console.log(donnees[i]);
+          console.log(datas[i]);
+        }*/
+        
+        var datas = [['Température (max)', 'Vent', 'Humidité (%)', 'Nébulosité (%)'], 
+                      ['Vent', 'Donnée 2'], 
+                      ['Humidité (%)', 'Donnée 4'],
+                      ['Nébulosité (%)', 'Donnée 4']
+                    ];
+        // Création d'une nouvelle feuille Excel
+        var feuille = XLSX.utils.aoa_to_sheet(datas);
+
+        // Formatage de la feuille Excel
+        feuille['!cols'] = [{wch: 20}, {wch: 20}]; // Largeur des colonnes
+        feuille['!merges'] = [{s: {r: 0, c: 0}, e: {r: 0, c: 2}}]; // Fusion des cellules pour les titres
+        feuille['A1'].s = {font: {bold: true}}; // Style de la cellule pour le titre de la colonne 1
+        feuille['B1'].s = {font: {bold: true}}; // Style de la cellule pour le titre de la colonne 2
+
+        // Exportation de la feuille Excel
+        var classeur = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(classeur, feuille, 'Feuille 1');
+        XLSX.writeFile(classeur, 'donnees.xlsx');
+      }
+
+      // Convertit une chaîne de caractères en un tableau de bytes
+      function s2ab(s) {
+        const buf = new ArrayBuffer(s.length);
+        const view = new Uint8Array(buf);
+        for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+        return buf;
+      }
+
+    </script>
+
   </body>
 </html>
