@@ -29,16 +29,16 @@
             <input type="checkbox" id="checkIS" class="filter"> IS
           </label>
           <label for="checkbox4">
-            <input type="checkbox" id="checkIS" class="filter"> IEPx
+            <input type="checkbox" id="checkIEPx" class="filter"> IEPx
           </label>
           <label for="checkbox5">
-            <input type="checkbox" id="checkIS" class="filter"> IFM
+            <input type="checkbox" id="checkIFM" class="filter"> IFM
           </label>
           <label for="checkbox6">
-            <input type="checkbox" id="checkIS" class="filter"> NSV2
+            <input type="checkbox" id="checkNSV2" class="filter"> NSV2
           </label>
           <label for="checkbox7">
-            <input type="checkbox" id="checkIS" class="filter"> IDI
+            <input type="checkbox" id="checkIDI" class="filter"> IDI
           </label>
           <button class="export-button" onclick="exporter()">Exporter</button>
         </aside>
@@ -226,25 +226,39 @@
 
       filters.forEach(filter => {
         filter.addEventListener("change", () => {
-          const filterID = filter.id;
-            const checked = filter.checked;
-
-            if (checked) {
-                var data = filterID.split('check');
-                rows.forEach(row => {
-                    if (row.innerText.includes(data[1])) {
-                        row.style.display = "table-row";
-                    } else {
-                        row.style.display = "none";
-                    }
-                });
-            } else {
-                rows.forEach((row) => {
-                    row.style.display = "table-row";
-                  });
-            }
+          filterRows();
         });
-    });
+      });
+
+      function filterRows() {
+        const selectedFilters = Array.from(document.querySelectorAll('.filter:checked')).map(filter => filter.id.replace('check', ''));
+        const rows = document.querySelectorAll('.data-row');
+
+        // Si aucun filtre n'est sélectionné, afficher toutes les lignes
+        if (selectedFilters.length === 0) {
+          rows.forEach(row => {
+            row.style.display = "table-row";
+          });
+          return;
+        }
+
+        rows.forEach(row => {
+          const rowValues = Array.from(row.querySelectorAll('th')).map(cell => cell.innerText);
+          let matchCount = 0;
+
+          selectedFilters.forEach(filter => {
+            if (rowValues.includes(filter)) {
+              matchCount++;
+            }
+          });
+
+          if (matchCount > 0) {
+            row.style.display = "table-row";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      }
 
       /*--------------------------------------------------------------------------Exportation--------------------------------------------------------------------------*/
 
