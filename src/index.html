@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.6/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   </head>
   <body>
@@ -20,13 +20,25 @@
       <div id="data">
         <aside>
           <label for="checkbox1">
-            <input type="checkbox" id="checkbox1"> Checkbox 1
+            <input type="checkbox" id="checkICL" class="filter"> ICL
           </label>
           <label for="checkbox2">
-            <input type="checkbox" id="checkbox2"> Checkbox 2
+            <input type="checkbox" id="checkIH" class="filter"> IH
           </label>
           <label for="checkbox3">
-            <input type="checkbox" id="checkbox3"> Checkbox 3
+            <input type="checkbox" id="checkIS" class="filter"> IS
+          </label>
+          <label for="checkbox4">
+            <input type="checkbox" id="checkIEPx" class="filter"> IEPx
+          </label>
+          <label for="checkbox5">
+            <input type="checkbox" id="checkIFM" class="filter"> IFM
+          </label>
+          <label for="checkbox6">
+            <input type="checkbox" id="checkNSV2" class="filter"> NSV2
+          </label>
+          <label for="checkbox7">
+            <input type="checkbox" id="checkIDI" class="filter"> IDI
           </label>
           <button class="export-button" onclick="exporter()">Exporter</button>
         </aside>
@@ -35,7 +47,7 @@
           <table class="styled-table">
             <thead>
               <tr>
-                <th colspan="2"></th>
+                <th></th>
                 <th>Grésigne</th>
                 <th>Ségala</th>
                 <th>Cogagne</th>
@@ -46,119 +58,115 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th rowspan="3">Indices de sécheresse</th>
+              <tr class="data-row">
                 <th>ICL</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
               </tr>
-              <tr class="active-row">
+              <tr class="data-row">
                 <th>IH</th>
-                <td>5150</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
               </tr>
-              <tr>
+              <tr class="data-row">
                 <th>IS</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
+                <td name="IDS">4000</td>
               </tr>
-              <tr>
-                <th rowspan="2">Indices de dangers</th>
+              <tr class="data-row">
                 <th>IEPx</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
               </tr>
-              <tr>
+              <tr class="data-row">
                 <th>IFM</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
+                <td name="IDD">5000</td>
               </tr>
-              <tr>
-                <th rowspan="2">?????</th>
+              <tr class="data-row">
                 <th>NSV2</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
               </tr>
-              <tr>
+              <tr class="data-row">
                 <th>IDI</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
+                <td name="IDR">6000</td>
               </tr>
-              <tr>
-                <th rowspan="4">Conditions météorologiques</th>
-                <th>Nébulosité</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-              </tr>
-              <tr>
-                <th>Force du vent</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-              </tr>
-              <tr>
-                <th>Taux d'humidité</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-              </tr>
-              <tr>
+              <tr class="data-row">
                 <th>Température de chaussée</th>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
-                <td>6000</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+              </tr>
+              <tr class="data-row">
+                <th>Force du vent</th>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+              </tr>
+              <tr class="data-row">
+                <th>Taux d'humidité</th>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+              </tr>
+              <tr class="data-row">
+                <th>Nébulosité</th>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
+                <td name="conditions">10</td>
               </tr>
             </tbody>
           </table>
@@ -190,6 +198,7 @@
 
     <script>
       /*--------------------------------------------------------------------------Changement d'onglets--------------------------------------------------------------------------*/
+
       const tabs = document.querySelectorAll('.tab');
       const tabContents = document.querySelectorAll('.tab-content');
 
@@ -210,62 +219,148 @@
         });
       });
 
+      /*--------------------------------------------------------------------------Checkbox change tab--------------------------------------------------------------------------*/
+
+      const filters = document.querySelectorAll('.filter');
+      const rows = document.querySelectorAll('.data-row');
+
+      filters.forEach(filter => {
+        filter.addEventListener("change", () => {
+          filterRows();
+        });
+      });
+
+      function filterRows() {
+        const selectedFilters = Array.from(document.querySelectorAll('.filter:checked')).map(filter => filter.id.replace('check', ''));
+        const rows = document.querySelectorAll('.data-row');
+
+        // Si aucun filtre n'est sélectionné, afficher toutes les lignes
+        if (selectedFilters.length === 0) {
+          rows.forEach(row => {
+            row.style.display = "table-row";
+          });
+          return;
+        }
+
+        rows.forEach(row => {
+          const rowValues = Array.from(row.querySelectorAll('th')).map(cell => cell.innerText);
+          let matchCount = 0;
+
+          selectedFilters.forEach(filter => {
+            if (rowValues.includes(filter)) {
+              matchCount++;
+            }
+          });
+
+          if (matchCount > 0) {
+            row.style.display = "table-row";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      }
+
       /*--------------------------------------------------------------------------Exportation--------------------------------------------------------------------------*/
 
       // Récupère les données HTML de la page et les formate en un tableau
-      function getData() {
-        // Sélectionne tous les éléments de la classe "data" dans la page
-        const elements = document.querySelectorAll('td');
-        
-        // Initialise un tableau qui va contenir les données
+      function getConditions() {
+        const elements = document.querySelectorAll("td[name='conditions']");
         const data = [];
-        
-        // Pour chaque élément, ajoute son texte dans le tableau de données
         elements.forEach(element => {
           data.push([element.textContent]);
         });
-        
+        return data;
+      }
+
+      function getIDS() {
+        const elements = document.querySelectorAll("td[name='IDS']");
+        const data = [];
+        elements.forEach(element => {
+          data.push([element.textContent]);
+        });
+        return data;
+      }
+
+      function getIDD() {
+        const elements = document.querySelectorAll("td[name='IDD']");
+        const data = [];
+        elements.forEach(element => {
+          data.push([element.textContent]);
+        });
+        return data;
+      }
+
+      function getIDR() {
+        const elements = document.querySelectorAll("td[name='IDR']");
+        const data = [];
+        elements.forEach(element => {
+          data.push([element.textContent]);
+        });
         return data;
       }
 
       // Fonction d'exportation
-      function exporter() {
-        // Récupération des données à exporter
-        /*var donnees = [['Température (max)', 'Vent', 'Humidité (%)', 'Nébulosité (%)'], ['Donnée 1', 'Donnée 2'], ['Donnée 3', 'Donnée 4']];
-        var datas = [6000,5000,4000,3000];
-        donnees[0].splice(2, 0, 6000);
-        console.log(donnees);
-        for (var i=0; i<datas.length; i++){
-          console.log(donnees[i]);
-          console.log(datas[i]);
-        }*/
-        
-        var datas = [['Température (max)', 'Vent', 'Humidité (%)', 'Nébulosité (%)'], 
-                      ['Vent', 'Donnée 2'], 
-                      ['Humidité (%)', 'Donnée 4'],
-                      ['Nébulosité (%)', 'Donnée 4']
-                    ];
+      function exporter() {        
         // Création d'une nouvelle feuille Excel
-        var feuille = XLSX.utils.aoa_to_sheet(datas);
-
-        // Formatage de la feuille Excel
-        feuille['!cols'] = [{wch: 20}, {wch: 20}]; // Largeur des colonnes
-        feuille['!merges'] = [{s: {r: 0, c: 0}, e: {r: 0, c: 2}}]; // Fusion des cellules pour les titres
-        feuille['A1'].s = {font: {bold: true}}; // Style de la cellule pour le titre de la colonne 1
-        feuille['B1'].s = {font: {bold: true}}; // Style de la cellule pour le titre de la colonne 2
-
-        // Exportation de la feuille Excel
+        var feuille = XLSX.utils.aoa_to_sheet([[]]);
         var classeur = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(classeur, feuille, 'Feuille 1');
-        XLSX.writeFile(classeur, 'donnees.xlsx');
-      }
 
-      // Convertit une chaîne de caractères en un tableau de bytes
-      function s2ab(s) {
-        const buf = new ArrayBuffer(s.length);
-        const view = new Uint8Array(buf);
-        for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-        return buf;
+        // Formatage de la feuille Excel
+        // Fusion des cellules pour les titres
+        feuille['!merges'] = [{s: {r: 1, c: 0}, e: {r: 2, c: 1}}, //A2:B3
+                              {s: {r: 3, c: 0}, e: {r: 5, c: 1}}, //A4:B6
+                              {s: {r: 6, c: 0}, e: {r: 7, c: 1}}, //A7:B9
+                              {s: {r: 8, c: 0}, e: {r: 9, c: 1}}, //A9:B10
+                              {s: {r: 10, c: 0}, e: {r: 10, c: 2}}, //A11:C11
+
+                              {s: {r: 11, c: 0}, e: {r: 31, c: 0}}, //A12:A32
+                              {s: {r: 11, c: 1}, e: {r: 17, c: 1}}, //B12:B18 
+                              {s: {r: 18, c: 1}, e: {r: 24, c: 1}}, //B19:B25
+                              {s: {r: 25, c: 1}, e: {r: 31, c: 1}}, //B26:B32
+
+                              {s: {r: 32, c: 0}, e: {r: 59, c: 0}}, //A33:A60
+                              {s: {r: 32, c: 1}, e: {r: 38, c: 1}}, //B33:B39
+                              {s: {r: 39, c: 1}, e: {r: 45, c: 1}}, //B39:B46
+                              {s: {r: 46, c: 1}, e: {r: 52, c: 1}}, //B47:B53
+                              {s: {r: 53, c: 1}, e: {r: 59, c: 1}}, //B54:B60
+                            ];
+
+        
+        //XLSX.utils.sheet_add_aoa(feuille, 'A1', { t: 's', v: 'Name', s: { font: { blod: 'true' } } });
+        //XLSX.utils.sheet_add_aoa(feuille, [["Température (max)"]], { t: 's', v: 'Name', s: { font: { blod: 'true' } } , origin: "A2", skipHeader: true,});
+
+        XLSX.utils.sheet_add_aoa(feuille, [["Température (max)"]], {origin: "A2", skipHeader: true,});
+        XLSX.utils.sheet_add_aoa(feuille, [["Vent"]], {origin: "A4"});
+        XLSX.utils.sheet_add_aoa(feuille, [["Humidité (%)"]], {origin: "A7"});
+        XLSX.utils.sheet_add_aoa(feuille, [["Nébulosité (%)"]], {origin: "A9"});
+        XLSX.utils.sheet_add_aoa(feuille, [["Pluie (mm)"]], {origin: "A11"});
+
+        XLSX.utils.sheet_add_aoa(feuille, [["Indices de sécheresse"]], {origin: "A12"});
+        XLSX.utils.sheet_add_aoa(feuille, [["Indicateurs de risques"]], {origin: "A33"});
+
+        XLSX.utils.sheet_add_aoa(feuille, [["Air (°C)"], ["Chaussée (°C)"], ["Orientation"], ["Vitesse (kh/h)"], ["Rafales (km/h)"],
+                                            ["08h00"], ["17h00"],["08h00"], ["17h00"]], {origin: "C2", skipHeader: true,});
+
+        XLSX.utils.sheet_add_aoa(feuille, [["ICLx"]], {origin: "B12"});
+        XLSX.utils.sheet_add_aoa(feuille, [["IH"]], {origin: "B19"});
+        XLSX.utils.sheet_add_aoa(feuille, [["IS"]], {origin: "B26"});
+        XLSX.utils.sheet_add_aoa(feuille, [["IEPx"]], {origin: "B33"});
+        XLSX.utils.sheet_add_aoa(feuille, [["IFM"]], {origin: "B40"});
+        XLSX.utils.sheet_add_aoa(feuille, [["NSV2"]], {origin: "B47"});
+        XLSX.utils.sheet_add_aoa(feuille, [["IDI"]], {origin: "B54"});
+        
+        /*var data = getConditions();
+        XLSX.utils.sheet_add_aoa(feuille, data, {origin: "D2", skipHeader: true,});*/
+        var data = getIDS();
+        XLSX.utils.sheet_add_aoa(feuille, data, {origin: "D12", skipHeader: true,});
+        var data = getIDD();
+        XLSX.utils.sheet_add_aoa(feuille, data, {origin: "D33", skipHeader: true,});
+        var data = getIDR();
+        XLSX.utils.sheet_add_aoa(feuille, data, {origin: "D47", skipHeader: true,});
+
+        // Exportation de la feuille Excel
+        XLSX.writeFile(classeur, 'indices.xlsx');
       }
 
     </script>
