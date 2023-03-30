@@ -33,7 +33,6 @@ hr { display: block; height: 1px;
 
 h1 {
 	font-weight: bold;
-	color: #222;
 }
 
 a, router-link {
